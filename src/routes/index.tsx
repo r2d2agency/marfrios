@@ -203,59 +203,8 @@ function Page() {
       </header>
 
       {/* HERO */}
-      <section id="home" className="relative pt-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-12 md:py-20 lg:grid-cols-2">
-          {/* LEFT */}
-          <div className="animate-fade-up">
-            <h1 className="text-5xl font-black leading-[1.05] md:text-6xl lg:text-7xl">
-              <span className="text-foreground/85">ATACADISTA DE</span>
-              <br />
-              <span className="text-brand">LATICÍNIOS</span>
-            </h1>
-            <div className="mt-5 h-1 w-20 rounded-full bg-brand" />
-            <p className="mt-6 max-w-md text-lg text-muted-foreground">
-              Qualidade, variedade e preço justo para o seu negócio.
-            </p>
+      <HeroSlideshow />
 
-            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {heroFeatures.map((f) => (
-                <div key={f.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
-                    <f.icon className="h-6 w-6" />
-                  </div>
-                  <div className="mt-3 text-xs font-semibold leading-snug text-foreground/80">
-                    {f.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03]"
-            >
-              <MessageCircle className="h-5 w-5" /> Fale pelo WhatsApp
-            </a>
-          </div>
-
-          {/* RIGHT */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl shadow-card">
-              <img
-                src={hero}
-                alt="Fachada MarFrios com produtos lácteos"
-                className="h-full w-full object-cover"
-                width={1024}
-                height={1024}
-              />
-            </div>
-            <div className="absolute -bottom-5 -left-5 hidden h-24 w-24 rounded-full bg-yellow/90 shadow-card md:block" />
-            <div className="absolute -top-4 -right-4 hidden h-16 w-16 rounded-full bg-brand/90 shadow-card md:block" />
-          </div>
-        </div>
-      </section>
 
       {/* DIFERENCIAIS */}
       <section id="vantagens" className="relative overflow-hidden bg-background py-24">
