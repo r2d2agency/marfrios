@@ -2,8 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Award, Truck, Tag, Users, MessageCircle, Calendar, Store,
-  MapPin, Phone, Menu, X,
+  MapPin, Phone, Menu, X, ChevronLeft, ChevronRight,
 } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import pLeite from "@/assets/prod-leite.jpg";
@@ -91,6 +93,52 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
       className={className}
     >
       {children}
+    </div>
+  );
+}
+
+function ProdutosCarousel() {
+  const autoplay = useRef(Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true }));
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", dragFree: false },
+    [autoplay.current],
+  );
+  return (
+    <div className="mt-16 relative">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex">
+          {produtos.map((p) => (
+            <div
+              key={p.label}
+              className="min-w-0 shrink-0 grow-0 basis-1/2 sm:basis-1/3 lg:basis-1/6 px-4"
+            >
+              <a href={waLink} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center">
+                <div className="relative h-32 w-32 overflow-hidden rounded-full shadow-card ring-4 ring-white transition duration-300 group-hover:-translate-y-1 group-hover:shadow-cta">
+                  <img src={p.img} alt={p.label} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
+                </div>
+                <div className="mt-5 max-w-[10rem] text-center text-sm font-bold text-foreground">
+                  {p.label}
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        onClick={() => emblaApi?.scrollPrev()}
+        aria-label="Anterior"
+        className="absolute left-0 top-16 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand shadow-card transition hover:bg-brand hover:text-white lg:-left-4"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        onClick={() => emblaApi?.scrollNext()}
+        aria-label="Próximo"
+        className="absolute right-0 top-16 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand shadow-card transition hover:bg-brand hover:text-white lg:-right-4"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
     </div>
   );
 }
@@ -243,22 +291,10 @@ function Page() {
           </h2>
           <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-brand" />
 
-          <div className="mt-16 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
-            {produtos.map((p, i) => (
-              <Reveal key={p.label} delay={i * 80}>
-                <a href={waLink} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center">
-                  <div className="relative h-32 w-32 overflow-hidden rounded-full shadow-card ring-4 ring-white transition duration-300 group-hover:-translate-y-1 group-hover:shadow-cta">
-                    <img src={p.img} alt={p.label} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                  </div>
-                  <div className="mt-5 max-w-[10rem] text-center text-sm font-bold text-foreground">
-                    {p.label}
-                  </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
+          <ProdutosCarousel />
         </Reveal>
       </section>
+
 
       {/* SOBRE (compact section to honor nav anchor) */}
       <section id="sobre" className="bg-background py-24">
