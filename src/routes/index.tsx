@@ -10,12 +10,12 @@ import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import pSalame from "@/assets/prod-salame.jpg.asset.json";
-import pBacon from "@/assets/prod-bacon.jpg.asset.json";
-import pBatata from "@/assets/prod-batata.jpg.asset.json";
-import pCatupiry from "@/assets/prod-catupiry.jpg.asset.json";
-import pMussFat from "@/assets/prod-mussarela-fatiada.jpg.asset.json";
-import pMussPed from "@/assets/prod-mussarela-pedaco.jpg.asset.json";
+const pSalame = { url: "/produtos/salame.jpg" };
+const pBacon = { url: "/produtos/bacon.jpg" };
+const pBatata = { url: "/produtos/batata.jpg" };
+const pCatupiry = { url: "/produtos/catupiry.jpg" };
+const pMussFat = { url: "/produtos/mussarela-fatiada.jpg" };
+const pMussPed = { url: "/produtos/mussarela-pedaco.jpg" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
