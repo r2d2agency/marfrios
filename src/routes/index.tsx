@@ -501,6 +501,7 @@ function Page() {
       {/* FOOTER */}
       <footer className="bg-brand py-6 text-center text-sm text-white/95">
         <div>© {new Date().getFullYear()} MarFrios Distribuidora. Todos os direitos reservados.</div>
+        <div className="mt-1 text-xs text-white/80">CNPJ: 35.502.133/0001-40</div>
         <div className="mt-1 text-xs text-white/80">Design by TNS R2D2</div>
       </footer>
 
