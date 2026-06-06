@@ -10,12 +10,12 @@ import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import pLeite from "@/assets/prod-leite.jpg";
-import pQueijos from "@/assets/prod-queijos.jpg";
-import pIogurtes from "@/assets/prod-iogurtes.jpg";
-import pManteiga from "@/assets/prod-manteiga.jpg";
-import pRequeijao from "@/assets/prod-requeijao.jpg";
-import pOutros from "@/assets/prod-outros.jpg";
+import pSalame from "@/assets/prod-salame.jpg.asset.json";
+import pBacon from "@/assets/prod-bacon.jpg.asset.json";
+import pBatata from "@/assets/prod-batata.jpg.asset.json";
+import pCatupiry from "@/assets/prod-catupiry.jpg.asset.json";
+import pMussFat from "@/assets/prod-mussarela-fatiada.jpg.asset.json";
+import pMussPed from "@/assets/prod-mussarela-pedaco.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
