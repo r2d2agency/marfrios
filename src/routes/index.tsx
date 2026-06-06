@@ -56,12 +56,12 @@ const diferenciais = [
 ];
 
 const produtos = [
-  { img: pLeite, label: "Leites e Bebidas Lácteas" },
-  { img: pQueijos, label: "Queijos" },
-  { img: pIogurtes, label: "Iogurtes e Sobremesas" },
-  { img: pManteiga, label: "Manteigas e Cremes" },
-  { img: pRequeijao, label: "Requeijões e Cremes de Queijo" },
-  { img: pOutros, label: "Outros Laticínios" },
+  { img: pSalame.url, label: "Salame" },
+  { img: pBacon.url, label: "Bacon Fatiado" },
+  { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
+  { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
+  { img: pCatupiry.url, label: "Requeijão Catupiry" },
+  { img: pBatata.url, label: "Batata Frita Congelada" },
 ];
 
 const horarios = [
