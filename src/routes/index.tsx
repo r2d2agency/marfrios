@@ -99,6 +99,147 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
   );
 }
 
+const heroSlides = [
+  {
+    img: hero,
+    eyebrow: "MarFrios Distribuidora",
+    titleTop: "ATACADISTA DE",
+    titleAccent: "LATICÍNIOS",
+    desc: "Qualidade, variedade e preço justo para o seu negócio.",
+  },
+  {
+    img: heroSlide2,
+    eyebrow: "Estoque sempre completo",
+    titleTop: "VARIEDADE QUE",
+    titleAccent: "ABASTECE",
+    desc: "Mais de mil clientes atendidos com agilidade e compromisso.",
+  },
+  {
+    img: heroSlide3,
+    eyebrow: "Parceiros das melhores cozinhas",
+    titleTop: "FEITO PARA",
+    titleAccent: "SUA PIZZARIA",
+    desc: "Mozarela, queijos e laticínios selecionados para o seu negócio.",
+  },
+];
+
+function HeroSlideshow() {
+  const autoplay = useRef(
+    Autoplay({ delay: 5500, stopOnInteraction: false, stopOnMouseEnter: false }),
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [autoplay.current]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
+
+  return (
+    <section id="home" className="relative pt-20">
+      <div className="relative h-[88vh] min-h-[600px] w-full overflow-hidden">
+        {/* slides */}
+        <div className="absolute inset-0" ref={emblaRef}>
+          <div className="flex h-full">
+            {heroSlides.map((s, i) => (
+              <div key={i} className="relative h-full min-w-0 shrink-0 grow-0 basis-full overflow-hidden">
+                <img
+                  src={s.img}
+                  alt=""
+                  className={`h-full w-full object-cover ${index === i ? "animate-kenburns" : ""}`}
+                  width={1920}
+                  height={1080}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* gradient: image -> white at bottom + soft left wash for legibility */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/85 via-white/40 to-transparent lg:from-white/75 lg:via-white/20" />
+
+        {/* text overlay */}
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+          <div key={index} className="max-w-xl">
+            <div className="animate-slide-in-left text-xs font-bold uppercase tracking-[0.22em] text-brand" style={{ animationDelay: "0.05s" }}>
+              {heroSlides[index].eyebrow}
+            </div>
+            <h1 className="mt-4 text-5xl font-black leading-[1.02] md:text-6xl lg:text-7xl">
+              <span className="block animate-slide-in-left text-foreground/85" style={{ animationDelay: "0.15s" }}>
+                {heroSlides[index].titleTop}
+              </span>
+              <span className="block animate-slide-in-left text-brand" style={{ animationDelay: "0.3s" }}>
+                {heroSlides[index].titleAccent}
+              </span>
+            </h1>
+            <div className="mt-5 h-1 w-20 rounded-full bg-brand animate-slide-in-left" style={{ animationDelay: "0.45s" }} />
+            <p className="mt-6 max-w-md text-lg text-muted-foreground animate-slide-in-left" style={{ animationDelay: "0.55s" }}>
+              {heroSlides[index].desc}
+            </p>
+
+            <div className="mt-8 grid max-w-md grid-cols-2 gap-4 sm:grid-cols-4 animate-slide-in-left" style={{ animationDelay: "0.7s" }}>
+              {heroFeatures.map((f) => (
+                <div key={f.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand/10 text-brand backdrop-blur">
+                    <f.icon className="h-5 w-5" />
+                  </div>
+                  <div className="mt-2 text-[11px] font-semibold leading-snug text-foreground/80">
+                    {f.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03] animate-slide-in-left"
+              style={{ animationDelay: "0.85s" }}
+            >
+              <MessageCircle className="h-5 w-5" /> Fale pelo WhatsApp
+            </a>
+          </div>
+        </div>
+
+        {/* arrows */}
+        <button
+          onClick={() => emblaApi?.scrollPrev()}
+          aria-label="Slide anterior"
+          className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-card backdrop-blur transition hover:bg-brand hover:text-white md:flex"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        <button
+          onClick={() => emblaApi?.scrollNext()}
+          aria-label="Próximo slide"
+          className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-card backdrop-blur transition hover:bg-brand hover:text-white md:flex"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+
+        {/* dots */}
+        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => emblaApi?.scrollTo(i)}
+              aria-label={`Ir para slide ${i + 1}`}
+              className={`h-2 rounded-full transition-all ${
+                index === i ? "w-8 bg-brand" : "w-2 bg-brand/30 hover:bg-brand/60"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProdutosCarousel() {
   const autoplay = useRef(Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true }));
   const [emblaRef, emblaApi] = useEmblaCarousel(
