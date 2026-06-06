@@ -10,12 +10,12 @@ import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import pLeite from "@/assets/prod-leite.jpg";
-import pQueijos from "@/assets/prod-queijos.jpg";
-import pIogurtes from "@/assets/prod-iogurtes.jpg";
-import pManteiga from "@/assets/prod-manteiga.jpg";
-import pRequeijao from "@/assets/prod-requeijao.jpg";
-import pOutros from "@/assets/prod-outros.jpg";
+import pSalame from "@/assets/prod-salame.jpg.asset.json";
+import pBacon from "@/assets/prod-bacon.jpg.asset.json";
+import pBatata from "@/assets/prod-batata.jpg.asset.json";
+import pCatupiry from "@/assets/prod-catupiry.jpg.asset.json";
+import pMussFat from "@/assets/prod-mussarela-fatiada.jpg.asset.json";
+import pMussPed from "@/assets/prod-mussarela-pedaco.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,12 +56,12 @@ const diferenciais = [
 ];
 
 const produtos = [
-  { img: pLeite, label: "Leites e Bebidas Lácteas" },
-  { img: pQueijos, label: "Queijos" },
-  { img: pIogurtes, label: "Iogurtes e Sobremesas" },
-  { img: pManteiga, label: "Manteigas e Cremes" },
-  { img: pRequeijao, label: "Requeijões e Cremes de Queijo" },
-  { img: pOutros, label: "Outros Laticínios" },
+  { img: pSalame.url, label: "Salame" },
+  { img: pBacon.url, label: "Bacon Fatiado" },
+  { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
+  { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
+  { img: pCatupiry.url, label: "Requeijão Catupiry" },
+  { img: pBatata.url, label: "Batata Frita Congelada" },
 ];
 
 const horarios = [
