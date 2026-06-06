@@ -2,8 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Award, Truck, Tag, Users, MessageCircle, Calendar, Store,
-  MapPin, Phone, Menu, X,
+  MapPin, Phone, Menu, X, ChevronLeft, ChevronRight,
 } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import pLeite from "@/assets/prod-leite.jpg";
