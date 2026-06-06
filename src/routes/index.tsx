@@ -8,6 +8,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
+import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg";
 import pLeite from "@/assets/prod-leite.jpg";
 import pQueijos from "@/assets/prod-queijos.jpg";
 import pIogurtes from "@/assets/prod-iogurtes.jpg";
