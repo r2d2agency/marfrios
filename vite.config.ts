@@ -14,7 +14,5 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
-  ...(isSelfHost
-    ? { nitro: { config: { preset: "node-server" } } }
-    : {}),
+  ...(isSelfHost ? { nitro: { preset: "node-server" } } : {}),
 });
