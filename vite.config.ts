@@ -6,10 +6,15 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Use node-server preset when building for self-hosting (Easypanel/Docker).
+// Lovable's hosted build keeps using cloudflare via env override.
+const isSelfHost = process.env.SELF_HOST === "1";
+
 export default defineConfig({
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
     server: { entry: "server" },
   },
+  ...(isSelfHost
+    ? { nitro: { config: { preset: "node-server" } } }
+    : {}),
 });
