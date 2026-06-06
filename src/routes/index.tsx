@@ -101,6 +101,13 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 const heroSlides = [
   {
+    img: "/produtos/hero-marfrios.webp",
+    eyebrow: "MarFrios Distribuidora",
+    titleTop: "MARCAS QUE",
+    titleAccent: "VOCÊ CONFIA",
+    desc: "Catupiry, mussarela e os melhores laticínios para o seu negócio.",
+  },
+  {
     img: hero,
     eyebrow: "MarFrios Distribuidora",
     titleTop: "ATACADISTA DE",
