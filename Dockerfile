@@ -10,6 +10,9 @@ RUN bun install --frozen-lockfile || bun install
 COPY . .
 ENV SELF_HOST=1
 ENV NODE_ENV=production
+ENV CI=true
+# Garante geração limpa do routeTree (evita loop "modified by another process")
+RUN rm -f src/routeTree.gen.ts
 RUN bun run build
 
 # ---- Runtime stage ----
