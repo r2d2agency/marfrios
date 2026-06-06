@@ -175,7 +175,7 @@ function HeroSlideshow() {
             <div className="animate-slide-in-left text-xs font-bold uppercase tracking-[0.22em] text-brand" style={{ animationDelay: "0.05s" }}>
               {heroSlides[index].eyebrow}
             </div>
-            <h1 className="mt-4 text-5xl font-black leading-[1.02] md:text-6xl lg:text-7xl">
+            <h1 className="mt-4 text-3xl font-black leading-[1.02] md:text-4xl lg:text-5xl">
               <span className="block animate-slide-in-left text-foreground/85" style={{ animationDelay: "0.15s" }}>
                 {heroSlides[index].titleTop}
               </span>
