@@ -245,22 +245,10 @@ function Page() {
           </h2>
           <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-brand" />
 
-          <div className="mt-16 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
-            {produtos.map((p, i) => (
-              <Reveal key={p.label} delay={i * 80}>
-                <a href={waLink} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center">
-                  <div className="relative h-32 w-32 overflow-hidden rounded-full shadow-card ring-4 ring-white transition duration-300 group-hover:-translate-y-1 group-hover:shadow-cta">
-                    <img src={p.img} alt={p.label} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                  </div>
-                  <div className="mt-5 max-w-[10rem] text-center text-sm font-bold text-foreground">
-                    {p.label}
-                  </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
+          <ProdutosCarousel />
         </Reveal>
       </section>
+
 
       {/* SOBRE (compact section to honor nav anchor) */}
       <section id="sobre" className="bg-background py-24">
