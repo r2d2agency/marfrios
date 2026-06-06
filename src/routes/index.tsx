@@ -8,6 +8,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
+import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg";
 import pLeite from "@/assets/prod-leite.jpg";
 import pQueijos from "@/assets/prod-queijos.jpg";
 import pIogurtes from "@/assets/prod-iogurtes.jpg";
@@ -94,6 +96,147 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
     >
       {children}
     </div>
+  );
+}
+
+const heroSlides = [
+  {
+    img: hero,
+    eyebrow: "MarFrios Distribuidora",
+    titleTop: "ATACADISTA DE",
+    titleAccent: "LATICÍNIOS",
+    desc: "Qualidade, variedade e preço justo para o seu negócio.",
+  },
+  {
+    img: heroSlide2,
+    eyebrow: "Estoque sempre completo",
+    titleTop: "VARIEDADE QUE",
+    titleAccent: "ABASTECE",
+    desc: "Mais de mil clientes atendidos com agilidade e compromisso.",
+  },
+  {
+    img: heroSlide3,
+    eyebrow: "Parceiros das melhores cozinhas",
+    titleTop: "FEITO PARA",
+    titleAccent: "SUA PIZZARIA",
+    desc: "Mozarela, queijos e laticínios selecionados para o seu negócio.",
+  },
+];
+
+function HeroSlideshow() {
+  const autoplay = useRef(
+    Autoplay({ delay: 5500, stopOnInteraction: false, stopOnMouseEnter: false }),
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [autoplay.current]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
+
+  return (
+    <section id="home" className="relative pt-20">
+      <div className="relative h-[88vh] min-h-[600px] w-full overflow-hidden">
+        {/* slides */}
+        <div className="absolute inset-0" ref={emblaRef}>
+          <div className="flex h-full">
+            {heroSlides.map((s, i) => (
+              <div key={i} className="relative h-full min-w-0 shrink-0 grow-0 basis-full overflow-hidden">
+                <img
+                  src={s.img}
+                  alt=""
+                  className={`h-full w-full object-cover ${index === i ? "animate-kenburns" : ""}`}
+                  width={1920}
+                  height={1080}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* gradient: image -> white at bottom + soft left wash for legibility */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/85 via-white/40 to-transparent lg:from-white/75 lg:via-white/20" />
+
+        {/* text overlay */}
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+          <div key={index} className="max-w-xl">
+            <div className="animate-slide-in-left text-xs font-bold uppercase tracking-[0.22em] text-brand" style={{ animationDelay: "0.05s" }}>
+              {heroSlides[index].eyebrow}
+            </div>
+            <h1 className="mt-4 text-5xl font-black leading-[1.02] md:text-6xl lg:text-7xl">
+              <span className="block animate-slide-in-left text-foreground/85" style={{ animationDelay: "0.15s" }}>
+                {heroSlides[index].titleTop}
+              </span>
+              <span className="block animate-slide-in-left text-brand" style={{ animationDelay: "0.3s" }}>
+                {heroSlides[index].titleAccent}
+              </span>
+            </h1>
+            <div className="mt-5 h-1 w-20 rounded-full bg-brand animate-slide-in-left" style={{ animationDelay: "0.45s" }} />
+            <p className="mt-6 max-w-md text-lg text-muted-foreground animate-slide-in-left" style={{ animationDelay: "0.55s" }}>
+              {heroSlides[index].desc}
+            </p>
+
+            <div className="mt-8 grid max-w-md grid-cols-2 gap-4 sm:grid-cols-4 animate-slide-in-left" style={{ animationDelay: "0.7s" }}>
+              {heroFeatures.map((f) => (
+                <div key={f.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand/10 text-brand backdrop-blur">
+                    <f.icon className="h-5 w-5" />
+                  </div>
+                  <div className="mt-2 text-[11px] font-semibold leading-snug text-foreground/80">
+                    {f.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03] animate-slide-in-left"
+              style={{ animationDelay: "0.85s" }}
+            >
+              <MessageCircle className="h-5 w-5" /> Fale pelo WhatsApp
+            </a>
+          </div>
+        </div>
+
+        {/* arrows */}
+        <button
+          onClick={() => emblaApi?.scrollPrev()}
+          aria-label="Slide anterior"
+          className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-card backdrop-blur transition hover:bg-brand hover:text-white md:flex"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        <button
+          onClick={() => emblaApi?.scrollNext()}
+          aria-label="Próximo slide"
+          className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-card backdrop-blur transition hover:bg-brand hover:text-white md:flex"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+
+        {/* dots */}
+        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => emblaApi?.scrollTo(i)}
+              aria-label={`Ir para slide ${i + 1}`}
+              className={`h-2 rounded-full transition-all ${
+                index === i ? "w-8 bg-brand" : "w-2 bg-brand/30 hover:bg-brand/60"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -201,59 +344,8 @@ function Page() {
       </header>
 
       {/* HERO */}
-      <section id="home" className="relative pt-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-12 md:py-20 lg:grid-cols-2">
-          {/* LEFT */}
-          <div className="animate-fade-up">
-            <h1 className="text-5xl font-black leading-[1.05] md:text-6xl lg:text-7xl">
-              <span className="text-foreground/85">ATACADISTA DE</span>
-              <br />
-              <span className="text-brand">LATICÍNIOS</span>
-            </h1>
-            <div className="mt-5 h-1 w-20 rounded-full bg-brand" />
-            <p className="mt-6 max-w-md text-lg text-muted-foreground">
-              Qualidade, variedade e preço justo para o seu negócio.
-            </p>
+      <HeroSlideshow />
 
-            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {heroFeatures.map((f) => (
-                <div key={f.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
-                    <f.icon className="h-6 w-6" />
-                  </div>
-                  <div className="mt-3 text-xs font-semibold leading-snug text-foreground/80">
-                    {f.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03]"
-            >
-              <MessageCircle className="h-5 w-5" /> Fale pelo WhatsApp
-            </a>
-          </div>
-
-          {/* RIGHT */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl shadow-card">
-              <img
-                src={hero}
-                alt="Fachada MarFrios com produtos lácteos"
-                className="h-full w-full object-cover"
-                width={1024}
-                height={1024}
-              />
-            </div>
-            <div className="absolute -bottom-5 -left-5 hidden h-24 w-24 rounded-full bg-yellow/90 shadow-card md:block" />
-            <div className="absolute -top-4 -right-4 hidden h-16 w-16 rounded-full bg-brand/90 shadow-card md:block" />
-          </div>
-        </div>
-      </section>
 
       {/* DIFERENCIAIS */}
       <section id="vantagens" className="relative overflow-hidden bg-background py-24">
