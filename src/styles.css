@@ -110,6 +110,8 @@
 @layer utilities {
   .animate-fade-up { animation: fadeUp 0.7s ease-out both; }
   .animate-float { animation: floatY 3s ease-in-out infinite; }
+  .animate-slide-in-left { animation: slideInLeft 0.9s cubic-bezier(.2,.7,.2,1) both; }
+  .animate-kenburns { animation: kenburns 7s ease-out both; }
   .text-brand { color: var(--brand); }
   .bg-brand { background-color: var(--brand); }
   .bg-brand-dark { background-color: var(--brand-dark); }
