@@ -270,13 +270,13 @@ function ProdutosGaleria() {
 
   return (
     <>
-      <div className="mt-12 grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-5 lg:gap-4">
+      <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
         {produtos.map((p, i) => (
           <button
             key={p.label}
             type="button"
             onClick={() => setLightbox(i)}
-            className="group relative overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-cta focus:outline-none focus:ring-2 focus:ring-brand"
+            className="group relative overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-cta focus:outline-none focus:ring-2 focus:ring-brand"
           >
             <div className="aspect-square overflow-hidden">
               <img
@@ -286,8 +286,8 @@ function ProdutosGaleria() {
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
               />
             </div>
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-2 pt-8 text-left">
-              <div className="text-[11px] font-bold leading-tight text-white drop-shadow sm:text-xs">{p.label}</div>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-3 pt-10 text-left">
+              <div className="text-sm font-bold leading-tight text-white drop-shadow sm:text-base">{p.label}</div>
             </div>
           </button>
         ))}
