@@ -62,6 +62,9 @@ const produtos = [
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
   { img: pCatupiry.url, label: "Requeijão Catupiry" },
   { img: pBatata.url, label: "Batata Frita Congelada" },
+  { img: "/produtos/galeria-laticinios.jpg", label: "Leite, Creme de Leite e Nutella" },
+  { img: "/produtos/galeria-conservas.jpg", label: "Conservas, Palmito e Molhos" },
+  { img: "/produtos/galeria-ovos.jpg", label: "Ovos por Atacado" },
 ];
 
 const horarios = [
@@ -247,49 +250,91 @@ function HeroSlideshow() {
   );
 }
 
-function ProdutosCarousel() {
-  const autoplay = useRef(Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: true }));
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", dragFree: false },
-    [autoplay.current],
-  );
+function ProdutosGaleria() {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox((i) => (i === null ? null : (i + 1) % produtos.length));
+      if (e.key === "ArrowLeft") setLightbox((i) => (i === null ? null : (i - 1 + produtos.length) % produtos.length));
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
+
   return (
-    <div className="mt-16 relative">
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {produtos.map((p) => (
-            <div
-              key={p.label}
-              className="min-w-0 shrink-0 grow-0 basis-1/2 sm:basis-1/3 lg:basis-1/6 px-4"
-            >
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center">
-                <div className="relative h-32 w-32 overflow-hidden rounded-full shadow-card ring-4 ring-white transition duration-300 group-hover:-translate-y-1 group-hover:shadow-cta">
-                  <img src={p.img} alt={p.label} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
-                </div>
-                <div className="mt-5 max-w-[10rem] text-center text-sm font-bold text-foreground">
-                  {p.label}
-                </div>
-              </a>
+    <>
+      <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-4">
+        {produtos.map((p, i) => (
+          <button
+            key={p.label}
+            type="button"
+            onClick={() => setLightbox(i)}
+            className="group relative overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-cta focus:outline-none focus:ring-2 focus:ring-brand"
+          >
+            <div className="aspect-square overflow-hidden">
+              <img
+                src={p.img}
+                alt={p.label}
+                loading="lazy"
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+              />
             </div>
-          ))}
-        </div>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 pt-10 text-left">
+              <div className="text-sm font-bold text-white drop-shadow">{p.label}</div>
+            </div>
+          </button>
+        ))}
       </div>
 
-      <button
-        onClick={() => emblaApi?.scrollPrev()}
-        aria-label="Anterior"
-        className="absolute left-0 top-16 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand shadow-card transition hover:bg-brand hover:text-white lg:-left-4"
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </button>
-      <button
-        onClick={() => emblaApi?.scrollNext()}
-        aria-label="Próximo"
-        className="absolute right-0 top-16 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand shadow-card transition hover:bg-brand hover:text-white lg:-right-4"
-      >
-        <ChevronRight className="h-5 w-5" />
-      </button>
-    </div>
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            type="button"
+            aria-label="Fechar"
+            onClick={() => setLightbox(null)}
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            aria-label="Anterior"
+            onClick={(e) => { e.stopPropagation(); setLightbox((i) => (i === null ? null : (i - 1 + produtos.length) % produtos.length)); }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            aria-label="Próximo"
+            onClick={(e) => { e.stopPropagation(); setLightbox((i) => (i === null ? null : (i + 1) % produtos.length)); }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+          <figure className="flex max-h-full max-w-5xl flex-col items-center" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={produtos[lightbox].img}
+              alt={produtos[lightbox].label}
+              className="max-h-[80vh] w-auto rounded-xl object-contain shadow-2xl"
+            />
+            <figcaption className="mt-4 text-center text-base font-semibold text-white">
+              {produtos[lightbox].label}
+            </figcaption>
+          </figure>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -387,7 +432,7 @@ function Page() {
           </h2>
           <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-brand" />
 
-          <ProdutosCarousel />
+          <ProdutosGaleria />
         </Reveal>
       </section>
 
