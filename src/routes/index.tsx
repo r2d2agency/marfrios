@@ -478,13 +478,13 @@ function Page() {
           </h2>
           <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-yellow" />
 
-          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
             {horarios.map((h, i) => (
               <Reveal key={h.top} delay={i * 100}>
-                <div className="flex flex-col items-center border-white/15 text-center lg:border-r last:border-r-0">
-                  <h.icon className="h-10 w-10 text-white" strokeWidth={1.8} />
-                  <div className="mt-4 text-base font-semibold">{h.top}</div>
-                  <div className="mt-1 text-lg font-bold">{h.bottom}</div>
+                <div className="flex h-full flex-col items-center justify-center rounded-2xl bg-white/10 px-4 py-5 text-center ring-1 ring-white/15 backdrop-blur-sm transition hover:bg-white/15 sm:py-7">
+                  <h.icon className="h-8 w-8 text-yellow sm:h-10 sm:w-10" strokeWidth={1.8} />
+                  <div className="mt-3 text-sm font-semibold sm:text-base">{h.top}</div>
+                  <div className="mt-1 text-base font-extrabold sm:text-lg">{h.bottom}</div>
                 </div>
               </Reveal>
             ))}
