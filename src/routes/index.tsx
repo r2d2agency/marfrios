@@ -10,6 +10,7 @@ import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import fachadaAsset from "@/assets/marfrios-fachada.jpg.asset.json";
 const pSalame = { url: "/produtos/salame.jpg" };
 const pBacon = { url: "/produtos/bacon.jpg" };
 const pBatata = { url: "/produtos/batata.jpg" };
