@@ -11,12 +11,12 @@ import hero from "@/assets/hero-products.jpg.asset.json";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
 import fachadaAsset from "@/assets/marfrios-fachada.jpg.asset.json";
-const pSalame = { url: "/produtos/salame.jpg" };
-const pBacon = { url: "/produtos/bacon.jpg" };
-const pBatata = { url: "/produtos/batata.jpg" };
-const pCatupiry = { url: "/produtos/catupiry.jpg" };
-const pMussFat = { url: "/produtos/mussarela-fatiada.jpg" };
-const pMussPed = { url: "/produtos/mussarela-pedaco.jpg" };
+const pSalame = { url: "/produtos/salame.webp" };
+const pBacon = { url: "/produtos/bacon.webp" };
+const pBatata = { url: "/produtos/batata.webp" };
+const pCatupiry = { url: "/produtos/catupiry.webp" };
+const pMussFat = { url: "/produtos/mussarela-fatiada.webp" };
+const pMussPed = { url: "/produtos/mussarela-pedaco.webp" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
