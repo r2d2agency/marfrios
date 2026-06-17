@@ -10,6 +10,7 @@ import logo from "@/assets/marfrios-logo.png";
 import hero from "@/assets/hero-products.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import fachadaAsset from "@/assets/marfrios-fachada.jpg.asset.json";
 const pSalame = { url: "/produtos/salame.jpg" };
 const pBacon = { url: "/produtos/bacon.jpg" };
 const pBatata = { url: "/produtos/batata.jpg" };
@@ -437,24 +438,35 @@ function Page() {
       </section>
 
 
-      {/* SOBRE (compact section to honor nav anchor) */}
+      {/* SOBRE */}
       <section id="sobre" className="bg-background py-24">
-        <Reveal className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">Sobre a MarFrios</span>
-            <h2 className="mt-3 text-3xl font-black md:text-4xl">
-              Distribuidora especializada em <span className="text-brand">laticínios</span> para o seu negócio.
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              Atendemos pizzarias, restaurantes, lanchonetes e estabelecimentos comerciais
-              com produtos selecionados das melhores marcas. Atacado e varejo com o compromisso
-              de oferecer qualidade, preço competitivo e atendimento de verdade.
-            </p>
-            <a href={waLink} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03]">
-              <MessageCircle className="h-4 w-4" /> Solicitar orçamento
-            </a>
+        <Reveal className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">Sobre a MarFrios</span>
+              <h2 className="mt-3 text-3xl font-black md:text-4xl">
+                Distribuidora especializada em <span className="text-brand">laticínios</span> para o seu negócio.
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                Atendemos pizzarias, restaurantes, lanchonetes e estabelecimentos comerciais
+                com produtos selecionados das melhores marcas. Atacado e varejo com o compromisso
+                de oferecer qualidade, preço competitivo e atendimento de verdade.
+              </p>
+              <a href={waLink} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03]">
+                <MessageCircle className="h-4 w-4" /> Solicitar orçamento
+              </a>
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-card ring-1 ring-border/60">
+              <img
+                src={fachadaAsset.url}
+                alt="Fachada da MarFrios Distribuidora com frota de vans"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-5">
+
+          <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-4">
             {[
               { n: "1000+", l: "Clientes atendidos" },
               { n: "10+", l: "Anos de mercado" },
