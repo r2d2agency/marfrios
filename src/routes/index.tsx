@@ -144,7 +144,7 @@ function HeroSlideshow() {
 
   return (
     <section id="home" className="relative pt-20">
-      <div className="relative h-[88vh] min-h-[600px] w-full overflow-hidden">
+      <div className="relative h-[70vh] min-h-[560px] max-h-[820px] w-full overflow-hidden">
         {/* slides */}
         <div className="absolute inset-0" ref={emblaRef}>
           <div className="flex h-full">
