@@ -7,10 +7,7 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/marfrios-logo.png";
-import hero from "@/assets/hero-products.jpg.asset.json";
-import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
-import fachadaAsset from "@/assets/marfrios-fachada.jpg.asset.json";
 const pSalame = { url: "/produtos/salame.webp" };
 const pBacon = { url: "/produtos/bacon.webp" };
 const pBatata = { url: "/produtos/batata.webp" };
@@ -112,7 +109,7 @@ const heroSlides = [
     desc: "Catupiry, mussarela e os melhores laticínios para o seu negócio.",
   },
   {
-    img: hero.url,
+    img: "/produtos/banner-laticinios.webp",
     eyebrow: "MarFrios Distribuidora",
     titleTop: "ATACADISTA DE",
     titleAccent: "LATICÍNIOS",
@@ -144,7 +141,7 @@ function HeroSlideshow() {
 
   return (
     <section id="home" className="relative pt-20">
-      <div className="relative h-[70vh] min-h-[560px] max-h-[820px] w-full overflow-hidden">
+      <div className="relative h-[calc(100svh-5rem)] min-h-[620px] max-h-[820px] w-full overflow-hidden sm:h-[70vh] sm:min-h-[560px]">
         {/* slides */}
         <div className="absolute inset-0" ref={emblaRef}>
           <div className="flex h-full">
@@ -153,8 +150,9 @@ function HeroSlideshow() {
                 <img
                   src={s.img}
                   alt=""
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover object-center sm:object-cover"
                   loading={i === 0 ? "eager" : "lazy"}
+                  fetchPriority={i === 0 ? "high" : "auto"}
                   decoding="async"
                   width={1920}
                   height={1080}
@@ -165,16 +163,16 @@ function HeroSlideshow() {
         </div>
 
         {/* gradient: image -> white at bottom + soft left wash for legibility */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/85 via-white/40 to-transparent lg:from-white/75 lg:via-white/20" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-white/55 to-white sm:from-transparent sm:via-white/10" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/30 sm:from-white/85 sm:via-white/40 sm:to-transparent lg:from-white/75 lg:via-white/20" />
 
         {/* text overlay */}
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 py-10">
           <div key={index} className="max-w-xl">
-            <div className="animate-slide-in-left text-xs font-bold uppercase tracking-[0.22em] text-brand" style={{ animationDelay: "0.05s" }}>
+            <div className="animate-slide-in-left text-[11px] font-bold uppercase tracking-[0.18em] text-brand sm:text-xs sm:tracking-[0.22em]" style={{ animationDelay: "0.05s" }}>
               {heroSlides[index].eyebrow}
             </div>
-            <h1 className="mt-4 text-3xl font-black leading-[1.02] md:text-4xl lg:text-5xl">
+            <h1 className="mt-3 text-[2.15rem] font-black leading-[0.98] md:text-4xl lg:text-5xl">
               <span className="block animate-slide-in-left text-foreground/85" style={{ animationDelay: "0.15s" }}>
                 {heroSlides[index].titleTop}
               </span>
@@ -182,12 +180,12 @@ function HeroSlideshow() {
                 {heroSlides[index].titleAccent}
               </span>
             </h1>
-            <div className="mt-5 h-1 w-20 rounded-full bg-brand animate-slide-in-left" style={{ animationDelay: "0.45s" }} />
-            <p className="mt-6 max-w-md text-lg text-muted-foreground animate-slide-in-left" style={{ animationDelay: "0.55s" }}>
+            <div className="mt-4 h-1 w-20 rounded-full bg-brand animate-slide-in-left sm:mt-5" style={{ animationDelay: "0.45s" }} />
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground animate-slide-in-left sm:mt-6 sm:max-w-md sm:text-lg" style={{ animationDelay: "0.55s" }}>
               {heroSlides[index].desc}
             </p>
 
-            <div className="mt-8 grid max-w-md grid-cols-2 gap-4 sm:grid-cols-4 animate-slide-in-left" style={{ animationDelay: "0.7s" }}>
+            <div className="mt-7 hidden max-w-md grid-cols-2 gap-4 sm:grid sm:grid-cols-4 animate-slide-in-left" style={{ animationDelay: "0.7s" }}>
               {heroFeatures.map((f) => (
                 <div key={f.label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand/10 text-brand backdrop-blur">
@@ -204,7 +202,7 @@ function HeroSlideshow() {
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03] animate-slide-in-left"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-semibold text-white shadow-cta transition hover:bg-brand-dark hover:scale-[1.03] animate-slide-in-left sm:mt-8"
               style={{ animationDelay: "0.85s" }}
             >
               <MessageCircle className="h-5 w-5" /> Fale pelo WhatsApp
@@ -453,7 +451,7 @@ function Page() {
             </div>
             <div className="overflow-hidden rounded-2xl shadow-card ring-1 ring-border/60">
               <img
-                src={fachadaAsset.url}
+                src="/produtos/marfrios-fachada.webp"
                 alt="Fachada da MarFrios Distribuidora com frota de vans"
                 loading="lazy"
                 className="h-full w-full object-cover"
