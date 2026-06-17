@@ -11,12 +11,12 @@ import hero from "@/assets/hero-products.jpg.asset.json";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
 import fachadaAsset from "@/assets/marfrios-fachada.jpg.asset.json";
-const pSalame = { url: "/produtos/salame.jpg" };
-const pBacon = { url: "/produtos/bacon.jpg" };
-const pBatata = { url: "/produtos/batata.jpg" };
-const pCatupiry = { url: "/produtos/catupiry.jpg" };
-const pMussFat = { url: "/produtos/mussarela-fatiada.jpg" };
-const pMussPed = { url: "/produtos/mussarela-pedaco.jpg" };
+const pSalame = { url: "/produtos/salame.webp" };
+const pBacon = { url: "/produtos/bacon.webp" };
+const pBatata = { url: "/produtos/batata.webp" };
+const pCatupiry = { url: "/produtos/catupiry.webp" };
+const pMussFat = { url: "/produtos/mussarela-fatiada.webp" };
+const pMussPed = { url: "/produtos/mussarela-pedaco.webp" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -63,9 +63,9 @@ const produtos = [
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
   { img: pCatupiry.url, label: "Requeijão Catupiry" },
   { img: pBatata.url, label: "Batata Frita Congelada" },
-  { img: "/produtos/galeria-laticinios.jpg", label: "Leite, Creme de Leite e Nutella" },
-  { img: "/produtos/galeria-conservas.jpg", label: "Conservas, Palmito e Molhos" },
-  { img: "/produtos/galeria-ovos.jpg", label: "Ovos por Atacado" },
+  { img: "/produtos/galeria-laticinios.webp", label: "Leite, Creme de Leite e Nutella" },
+  { img: "/produtos/galeria-conservas.webp", label: "Conservas, Palmito e Molhos" },
+  { img: "/produtos/galeria-ovos.webp", label: "Ovos por Atacado" },
 ];
 
 const horarios = [
@@ -144,7 +144,7 @@ function HeroSlideshow() {
 
   return (
     <section id="home" className="relative pt-20">
-      <div className="relative h-[88vh] min-h-[600px] w-full overflow-hidden">
+      <div className="relative h-[70vh] min-h-[560px] max-h-[820px] w-full overflow-hidden">
         {/* slides */}
         <div className="absolute inset-0" ref={emblaRef}>
           <div className="flex h-full">
@@ -153,7 +153,9 @@ function HeroSlideshow() {
                 <img
                   src={s.img}
                   alt=""
-                  className={`h-full w-full object-cover ${index === i ? "animate-kenburns" : ""}`}
+                  className="h-full w-full object-cover object-center"
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
                   width={1920}
                   height={1080}
                 />
