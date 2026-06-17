@@ -39,7 +39,7 @@
   --shadow-cta: 0 8px 24px -8px oklch(0.55 0.22 27 / 0.45);
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
 
 :root {
   --radius: 0.75rem;
