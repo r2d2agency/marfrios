@@ -153,7 +153,9 @@ function HeroSlideshow() {
                 <img
                   src={s.img}
                   alt=""
-                  className={`h-full w-full object-cover ${index === i ? "animate-kenburns" : ""}`}
+                  className="h-full w-full object-cover object-center"
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
                   width={1920}
                   height={1080}
                 />
