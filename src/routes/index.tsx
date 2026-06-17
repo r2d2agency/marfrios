@@ -112,7 +112,7 @@ const heroSlides = [
     desc: "Catupiry, mussarela e os melhores laticínios para o seu negócio.",
   },
   {
-    img: hero,
+    img: hero.url,
     eyebrow: "MarFrios Distribuidora",
     titleTop: "ATACADISTA DE",
     titleAccent: "LATICÍNIOS",
