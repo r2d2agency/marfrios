@@ -7,7 +7,6 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import logo from "@/assets/marfrios-logo.png";
-import hero from "@/assets/hero-products.jpg.asset.json";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
 import fachadaAsset from "@/assets/marfrios-fachada.jpg.asset.json";
@@ -110,13 +109,6 @@ const heroSlides = [
     titleTop: "MARCAS QUE",
     titleAccent: "VOCÊ CONFIA",
     desc: "Catupiry, mussarela e os melhores laticínios para o seu negócio.",
-  },
-  {
-    img: hero.url,
-    eyebrow: "MarFrios Distribuidora",
-    titleTop: "ATACADISTA DE",
-    titleAccent: "LATICÍNIOS",
-    desc: "Qualidade, variedade e preço justo para o seu negócio.",
   },
   {
     img: heroSlide2,
