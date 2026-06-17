@@ -63,9 +63,9 @@ const produtos = [
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
   { img: pCatupiry.url, label: "Requeijão Catupiry" },
   { img: pBatata.url, label: "Batata Frita Congelada" },
-  { img: "/produtos/galeria-laticinios.jpg", label: "Leite, Creme de Leite e Nutella" },
-  { img: "/produtos/galeria-conservas.jpg", label: "Conservas, Palmito e Molhos" },
-  { img: "/produtos/galeria-ovos.jpg", label: "Ovos por Atacado" },
+  { img: "/produtos/galeria-laticinios.webp", label: "Leite, Creme de Leite e Nutella" },
+  { img: "/produtos/galeria-conservas.webp", label: "Conservas, Palmito e Molhos" },
+  { img: "/produtos/galeria-ovos.webp", label: "Ovos por Atacado" },
 ];
 
 const horarios = [
