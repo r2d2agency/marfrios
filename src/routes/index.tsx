@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Award, Truck, Tag, Users, MessageCircle, Calendar, Store,
-  MapPin, Phone, Menu, X, ChevronLeft, ChevronRight,
+  MapPin, Phone, Menu, X, ChevronLeft, ChevronRight, Plus,
 } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
