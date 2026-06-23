@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Award, Truck, Tag, Users, MessageCircle, Calendar, Store,
-  MapPin, Phone, Menu, X, ChevronLeft, ChevronRight,
+  MapPin, Phone, Menu, X, ChevronLeft, ChevronRight, Plus,
 } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -53,13 +53,29 @@ const diferenciais = [
   { icon: Users, title: "Atendimento Especializado", desc: "Equipe pronta para atender e oferecer as melhores soluções." },
 ];
 
-const produtos = [
+type Produto = {
+  img: string;
+  label: string;
+  href?: string;
+  mosaic?: string[];
+};
+
+const congeladosImgs = [
+  "/produtos/batata.webp",
+];
+
+const produtos: Produto[] = [
   { img: pSalame.url, label: "Salame" },
   { img: pBacon.url, label: "Bacon Fatiado" },
   { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
   { img: pCatupiry.url, label: "Requeijão Catupiry" },
-  { img: pBatata.url, label: "Batata Frita Congelada" },
+  {
+    img: pBatata.url,
+    label: "Congelados",
+    href: "/congelados",
+    mosaic: [pBatata.url, pBatata.url, pBatata.url, pBatata.url],
+  },
   { img: "/produtos/galeria-laticinios.webp", label: "Leite, Creme de Leite e Nutella" },
   { img: "/produtos/galeria-conservas.webp", label: "Conservas, Palmito e Molhos" },
   { img: "/produtos/galeria-ovos.webp", label: "Ovos por Atacado" },
@@ -265,13 +281,35 @@ function ProdutosGaleria() {
   return (
     <>
       <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
-        {produtos.map((p, i) => (
-          <button
-            key={p.label}
-            type="button"
-            onClick={() => setLightbox(i)}
-            className="group relative overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-cta focus:outline-none focus:ring-2 focus:ring-brand"
-          >
+        {produtos.map((p, i) => {
+          const cardClass =
+            "group relative overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-border/60 transition hover:-translate-y-1 hover:shadow-cta focus:outline-none focus:ring-2 focus:ring-brand";
+          const caption = (
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-3 pt-10 text-left">
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-sm font-bold leading-tight text-white drop-shadow sm:text-base">{p.label}</div>
+                {p.href && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                    <Plus className="h-3 w-3" /> Ver
+                  </span>
+                )}
+              </div>
+            </div>
+          );
+          const media = p.mosaic ? (
+            <div className="grid aspect-square grid-cols-2 grid-rows-2 gap-0.5 overflow-hidden bg-white">
+              {p.mosaic.slice(0, 4).map((src, idx) => (
+                <div key={idx} className="overflow-hidden">
+                  <img
+                    src={src}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
             <div className="aspect-square overflow-hidden">
               <img
                 src={p.img}
@@ -280,11 +318,23 @@ function ProdutosGaleria() {
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
               />
             </div>
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-3 pt-10 text-left">
-              <div className="text-sm font-bold leading-tight text-white drop-shadow sm:text-base">{p.label}</div>
-            </div>
-          </button>
-        ))}
+          );
+
+          if (p.href) {
+            return (
+              <Link key={p.label} to={p.href} className={cardClass}>
+                {media}
+                {caption}
+              </Link>
+            );
+          }
+          return (
+            <button key={p.label} type="button" onClick={() => setLightbox(i)} className={cardClass}>
+              {media}
+              {caption}
+            </button>
+          );
+        })}
       </div>
 
       {lightbox !== null && (
