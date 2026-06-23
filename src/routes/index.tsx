@@ -53,13 +53,29 @@ const diferenciais = [
   { icon: Users, title: "Atendimento Especializado", desc: "Equipe pronta para atender e oferecer as melhores soluções." },
 ];
 
-const produtos = [
+type Produto = {
+  img: string;
+  label: string;
+  href?: string;
+  mosaic?: string[];
+};
+
+const congeladosImgs = [
+  "/produtos/batata.webp",
+];
+
+const produtos: Produto[] = [
   { img: pSalame.url, label: "Salame" },
   { img: pBacon.url, label: "Bacon Fatiado" },
   { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
   { img: pCatupiry.url, label: "Requeijão Catupiry" },
-  { img: pBatata.url, label: "Batata Frita Congelada" },
+  {
+    img: pBatata.url,
+    label: "Congelados",
+    href: "/congelados",
+    mosaic: [pBatata.url, pBatata.url, pBatata.url, pBatata.url],
+  },
   { img: "/produtos/galeria-laticinios.webp", label: "Leite, Creme de Leite e Nutella" },
   { img: "/produtos/galeria-conservas.webp", label: "Conservas, Palmito e Molhos" },
   { img: "/produtos/galeria-ovos.webp", label: "Ovos por Atacado" },
