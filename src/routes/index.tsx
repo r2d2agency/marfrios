@@ -79,7 +79,17 @@ const produtos: Produto[] = [
   },
   { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
-  { img: pCatupiry.url, label: "Requeijão Catupiry" },
+  {
+    img: pCatupiry.url,
+    label: "Requeijão, Cheddar & Cream Cheese",
+    href: "/requeijao",
+    mosaic: [
+      "/requeijao/catupiry-requeijao-balde.webp",
+      "/requeijao/tirolez-requeijao-cheddar.webp",
+      "/requeijao/catupiry-cream-cheese.webp",
+      "/requeijao/scala-requeijao.webp",
+    ],
+  },
   {
     img: pBatata.url,
     label: "Congelados",

@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RequeijaoRouteImport } from './routes/requeijao'
 import { Route as CongeladosRouteImport } from './routes/congelados'
 import { Route as BaconRouteImport } from './routes/bacon'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RequeijaoRoute = RequeijaoRouteImport.update({
+  id: '/requeijao',
+  path: '/requeijao',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CongeladosRoute = CongeladosRouteImport.update({
   id: '/congelados',
   path: '/congelados',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bacon': typeof BaconRoute
   '/congelados': typeof CongeladosRoute
+  '/requeijao': typeof RequeijaoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bacon': typeof BaconRoute
   '/congelados': typeof CongeladosRoute
+  '/requeijao': typeof RequeijaoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bacon': typeof BaconRoute
   '/congelados': typeof CongeladosRoute
+  '/requeijao': typeof RequeijaoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bacon' | '/congelados'
+  fullPaths: '/' | '/bacon' | '/congelados' | '/requeijao'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bacon' | '/congelados'
-  id: '__root__' | '/' | '/bacon' | '/congelados'
+  to: '/' | '/bacon' | '/congelados' | '/requeijao'
+  id: '__root__' | '/' | '/bacon' | '/congelados' | '/requeijao'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BaconRoute: typeof BaconRoute
   CongeladosRoute: typeof CongeladosRoute
+  RequeijaoRoute: typeof RequeijaoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/requeijao': {
+      id: '/requeijao'
+      path: '/requeijao'
+      fullPath: '/requeijao'
+      preLoaderRoute: typeof RequeijaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/congelados': {
       id: '/congelados'
       path: '/congelados'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BaconRoute: BaconRoute,
   CongeladosRoute: CongeladosRoute,
+  RequeijaoRoute: RequeijaoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
