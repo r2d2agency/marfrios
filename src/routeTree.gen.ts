@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as CongeladosRouteImport } from './routes/congelados'
+import { Route as BaconRouteImport } from './routes/bacon'
 import { Route as IndexRouteImport } from './routes/index'
 
 const CongeladosRoute = CongeladosRouteImport.update({
   id: '/congelados',
   path: '/congelados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BaconRoute = BaconRouteImport.update({
+  id: '/bacon',
+  path: '/bacon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bacon': typeof BaconRoute
   '/congelados': typeof CongeladosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bacon': typeof BaconRoute
   '/congelados': typeof CongeladosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bacon': typeof BaconRoute
   '/congelados': typeof CongeladosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/congelados'
+  fullPaths: '/' | '/bacon' | '/congelados'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/congelados'
-  id: '__root__' | '/' | '/congelados'
+  to: '/' | '/bacon' | '/congelados'
+  id: '__root__' | '/' | '/bacon' | '/congelados'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BaconRoute: typeof BaconRoute
   CongeladosRoute: typeof CongeladosRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/congelados'
       fullPath: '/congelados'
       preLoaderRoute: typeof CongeladosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bacon': {
+      id: '/bacon'
+      path: '/bacon'
+      fullPath: '/bacon'
+      preLoaderRoute: typeof BaconRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,18 +87,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BaconRoute: BaconRoute,
   CongeladosRoute: CongeladosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
