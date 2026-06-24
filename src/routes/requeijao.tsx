@@ -52,13 +52,19 @@ function RequeijaoPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <Link to="/" className="flex items-center">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-6">
+          <Link to="/" className="flex items-center shrink-0">
             <img src={logo} alt="MarFrios" className="h-9 w-auto" />
           </Link>
+          <nav className="hidden items-center gap-6 lg:flex">
+            <a href="/#sobre" className="text-sm font-semibold text-foreground/80 transition hover:text-brand">Sobre</a>
+            <a href="/#produtos" className="text-sm font-semibold text-foreground/80 transition hover:text-brand">Produtos</a>
+            <a href="/#vantagens" className="text-sm font-semibold text-foreground/80 transition hover:text-brand">Vantagens</a>
+            <a href="/#contato" className="text-sm font-semibold text-foreground/80 transition hover:text-brand">Contato</a>
+          </nav>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-full bg-soft px-4 py-2 text-sm font-semibold text-foreground/80 transition hover:bg-brand hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full bg-soft px-4 py-2 text-sm font-semibold text-foreground/80 transition hover:bg-brand hover:text-white shrink-0"
           >
             <ArrowLeft className="h-4 w-4" /> Voltar
           </Link>
