@@ -30,11 +30,7 @@ const congelados = [
   { img: "/congelados/brocolis-nutriz.webp", label: "Brócolis Congelado Nutriz 2,5kg" },
   { img: "/congelados/tilapia-empanada-baita.webp", label: "Iscas de Filé de Tilápia Empanadas Baita 700g" },
   { img: "/congelados/salsicha-hotdog-perdigao.webp", label: "Salsicha Hot Dog Perdigão 5kg" },
-  { img: "/congelados/papada-paleta-cubos-misterbeef.webp", label: "Papada e Paleta Suína Defumada em Cubos Mister Beef 1kg" },
-  { img: "/congelados/papada-fatias-misterbeef.webp", label: "Papada Suína Defumada em Fatias Mister Beef 1kg" },
-  { img: "/congelados/bacon-frigomarla.webp", label: "Bacon Defumado Frigo Marla 1kg" },
-  { img: "/congelados/bacon-paleta-marfrios.webp", label: "Bacon Paleta Fatiado MarFrios 1kg" },
-  { img: "/congelados/bacon-marfrios-fatiado.webp", label: "Bacon MarFrios Fatiado 1kg" },
+
   { img: "/congelados/bacon-cubos-marfrios.webp", label: "Bacon em Cubos MarFrios 1kg" },
 ];
 
