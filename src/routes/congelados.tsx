@@ -8,6 +8,16 @@ const waLink = `https://wa.me/${WHATSAPP}`;
 
 const congelados = [
   { img: "/produtos/batata.webp", label: "Batata Frita Congelada" },
+  { img: "/congelados/pao-frances.webp", label: "Pão Francês Tati 1kg" },
+  { img: "/congelados/pao-queijo-catupiry.webp", label: "Pão de Queijo Catupiry 1kg" },
+  { img: "/congelados/brasa-picanha-costela.webp", label: "Hambúrguer Brasa Picanha e Costela 150g" },
+  { img: "/congelados/brasa-angus.webp", label: "Hambúrguer Brasa Angus" },
+  { img: "/congelados/filezinho-empanado.webp", label: "Filezinho de Frango Empanado C.Vale" },
+  { img: "/congelados/tilapia.webp", label: "Filé de Tilápia Copacol 800g" },
+  { img: "/congelados/linguica-churrasco.webp", label: "Linguiça Churrasco Aurora" },
+  { img: "/congelados/brocolis.webp", label: "Brócolis Sadia Veg&tal 300g" },
+  { img: "/congelados/ervilha.webp", label: "Ervilha Sadia Veg&tal 1,05kg" },
+  { img: "/congelados/couve-flor.webp", label: "Couve-flor Sadia Veg&tal 300g" },
 ];
 
 export const Route = createFileRoute("/congelados")({
