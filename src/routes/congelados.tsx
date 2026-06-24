@@ -18,6 +18,16 @@ const congelados = [
   { img: "/congelados/brocolis.webp", label: "Brócolis Sadia Veg&tal 300g" },
   { img: "/congelados/ervilha.webp", label: "Ervilha Sadia Veg&tal 1,05kg" },
   { img: "/congelados/couve-flor.webp", label: "Couve-flor Sadia Veg&tal 300g" },
+  { img: "/congelados/file-peito-sadia.webp", label: "Filé de Peito Sadia Congelados 1a1 1kg" },
+  { img: "/congelados/file-peito-frangorico.webp", label: "Filé de Peito Frango Rico" },
+  { img: "/congelados/big-chicken-perdigao.webp", label: "Big Chicken Queijo Perdigão 1kg" },
+  { img: "/congelados/chicken-supreme-seara.webp", label: "Chicken Supreme Burger Seara 2kg" },
+  { img: "/congelados/brasa-tradicional-90g.webp", label: "Hambúrguer Brasa Tradicional 90g (36 un)" },
+  { img: "/congelados/brasa-tradicional-120g.webp", label: "Hambúrguer Brasa Tradicional 120g (30 un)" },
+  { img: "/congelados/batata-crinkle-bembrasil.webp", label: "Batata Crinkle BemBrasil 2kg" },
+  { img: "/congelados/onion-rings-simplot.webp", label: "Onion Rings Simplot 1,1kg" },
+  { img: "/congelados/jardineira-demarchi.webp", label: "Jardineira com Milho IQF DeMarchi" },
+  { img: "/congelados/brocolis-nutriz.webp", label: "Brócolis Congelado Nutriz 2,5kg" },
 ];
 
 export const Route = createFileRoute("/congelados")({
