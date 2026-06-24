@@ -30,8 +30,6 @@ const congelados = [
   { img: "/congelados/brocolis-nutriz.webp", label: "Brócolis Congelado Nutriz 2,5kg" },
   { img: "/congelados/tilapia-empanada-baita.webp", label: "Iscas de Filé de Tilápia Empanadas Baita 700g" },
   { img: "/congelados/salsicha-hotdog-perdigao.webp", label: "Salsicha Hot Dog Perdigão 5kg" },
-
-  { img: "/congelados/bacon-cubos-marfrios.webp", label: "Bacon em Cubos MarFrios 1kg" },
 ];
 
 export const Route = createFileRoute("/congelados")({
