@@ -6,53 +6,36 @@ import logo from "@/assets/marfrios-logo.png";
 const WHATSAPP = "5517991220670";
 const waLink = `https://wa.me/${WHATSAPP}`;
 
-const congelados = [
-  { img: "/produtos/batata.webp", label: "Batata Frita Congelada" },
-  { img: "/congelados/pao-frances.webp", label: "Pão Francês Tati 1kg" },
-  { img: "/congelados/pao-queijo-catupiry.webp", label: "Pão de Queijo Catupiry 1kg" },
-  { img: "/congelados/brasa-picanha-costela.webp", label: "Hambúrguer Brasa Picanha e Costela 150g" },
-  { img: "/congelados/brasa-angus.webp", label: "Hambúrguer Brasa Angus" },
-  { img: "/congelados/filezinho-empanado.webp", label: "Filezinho de Frango Empanado C.Vale" },
-  { img: "/congelados/tilapia.webp", label: "Filé de Tilápia Copacol 800g" },
-  { img: "/congelados/linguica-churrasco.webp", label: "Linguiça Churrasco Aurora" },
-  { img: "/congelados/brocolis.webp", label: "Brócolis Sadia Veg&tal 300g" },
-  { img: "/congelados/ervilha.webp", label: "Ervilha Sadia Veg&tal 1,05kg" },
-  { img: "/congelados/couve-flor.webp", label: "Couve-flor Sadia Veg&tal 300g" },
-  { img: "/congelados/file-peito-sadia.webp", label: "Filé de Peito Sadia Congelados 1a1 1kg" },
-  { img: "/congelados/file-peito-frangorico.webp", label: "Filé de Peito Frango Rico" },
-  { img: "/congelados/big-chicken-perdigao.webp", label: "Big Chicken Queijo Perdigão 1kg" },
-  { img: "/congelados/chicken-supreme-seara.webp", label: "Chicken Supreme Burger Seara 2kg" },
-  { img: "/congelados/brasa-tradicional-90g.webp", label: "Hambúrguer Brasa Tradicional 90g (36 un)" },
-  { img: "/congelados/brasa-tradicional-120g.webp", label: "Hambúrguer Brasa Tradicional 120g (30 un)" },
-  { img: "/congelados/batata-crinkle-bembrasil.webp", label: "Batata Crinkle BemBrasil 2kg" },
-  { img: "/congelados/onion-rings-simplot.webp", label: "Onion Rings Simplot 1,1kg" },
-  { img: "/congelados/jardineira-demarchi.webp", label: "Jardineira com Milho IQF DeMarchi" },
-  { img: "/congelados/brocolis-nutriz.webp", label: "Brócolis Congelado Nutriz 2,5kg" },
-  { img: "/congelados/tilapia-empanada-baita.webp", label: "Iscas de Filé de Tilápia Empanadas Baita 700g" },
-  { img: "/congelados/salsicha-hotdog-perdigao.webp", label: "Salsicha Hot Dog Perdigão 5kg" },
+const bacons = [
+  { img: "/congelados/bacon-marfrios-fatiado.webp", label: "Bacon MarFrios Fatiado 1kg" },
+  { img: "/congelados/bacon-paleta-marfrios.webp", label: "Bacon Paleta Fatiado MarFrios 1kg" },
+  { img: "/congelados/bacon-cubos-marfrios.webp", label: "Bacon em Cubos MarFrios 1kg" },
+  { img: "/congelados/bacon-frigomarla.webp", label: "Bacon Defumado Frigo Marla 1kg" },
+  { img: "/congelados/papada-fatias-misterbeef.webp", label: "Papada Suína Defumada em Fatias Mister Beef 1kg" },
+  { img: "/congelados/papada-paleta-cubos-misterbeef.webp", label: "Papada e Paleta Suína Defumada em Cubos Mister Beef 1kg" },
 ];
 
-export const Route = createFileRoute("/congelados")({
+export const Route = createFileRoute("/bacon")({
   head: () => ({
     meta: [
-      { title: "Congelados — MarFrios Distribuidora" },
-      { name: "description", content: "Linha de congelados MarFrios: batata frita, salgados, hambúrgueres e muito mais para o seu negócio." },
-      { property: "og:title", content: "Congelados — MarFrios Distribuidora" },
-      { property: "og:description", content: "Confira nossa linha completa de produtos congelados para pizzarias, lanchonetes e restaurantes." },
+      { title: "Bacon — MarFrios Distribuidora" },
+      { name: "description", content: "Linha completa de bacon MarFrios: fatiado, em cubos, paleta, papada defumada e mais para o seu negócio." },
+      { property: "og:title", content: "Bacon — MarFrios Distribuidora" },
+      { property: "og:description", content: "Bacon fatiado, em cubos, paleta e papada defumada para pizzarias, lanchonetes e restaurantes." },
     ],
   }),
-  component: CongeladosPage,
+  component: BaconPage,
 });
 
-function CongeladosPage() {
+function BaconPage() {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   useEffect(() => {
     if (lightbox === null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightbox(null);
-      if (e.key === "ArrowRight") setLightbox((i) => (i === null ? null : (i + 1) % congelados.length));
-      if (e.key === "ArrowLeft") setLightbox((i) => (i === null ? null : (i - 1 + congelados.length) % congelados.length));
+      if (e.key === "ArrowRight") setLightbox((i) => (i === null ? null : (i + 1) % bacons.length));
+      if (e.key === "ArrowLeft") setLightbox((i) => (i === null ? null : (i - 1 + bacons.length) % bacons.length));
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -83,17 +66,17 @@ function CongeladosPage() {
           <div className="text-center">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand">MarFrios</span>
             <h1 className="mt-3 text-3xl font-black md:text-5xl">
-              Nossa linha de <span className="text-brand">Congelados</span>
+              Nossa linha de <span className="text-brand">Bacon</span>
             </h1>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-brand" />
             <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground">
-              Variedade de produtos congelados para o seu negócio. Clique em uma imagem para ampliar
-              ou fale conosco para fazer seu pedido.
+              Bacon fatiado, em cubos, paleta e papada defumada para o seu negócio.
+              Clique em uma imagem para ampliar ou fale conosco para fazer seu pedido.
             </p>
           </div>
 
           <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
-            {congelados.map((p, i) => (
+            {bacons.map((p, i) => (
               <button
                 key={p.label + i}
                 type="button"
@@ -144,7 +127,7 @@ function CongeladosPage() {
           <button
             type="button"
             aria-label="Anterior"
-            onClick={(e) => { e.stopPropagation(); setLightbox((i) => (i === null ? null : (i - 1 + congelados.length) % congelados.length)); }}
+            onClick={(e) => { e.stopPropagation(); setLightbox((i) => (i === null ? null : (i - 1 + bacons.length) % bacons.length)); }}
             className="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -152,19 +135,19 @@ function CongeladosPage() {
           <button
             type="button"
             aria-label="Próximo"
-            onClick={(e) => { e.stopPropagation(); setLightbox((i) => (i === null ? null : (i + 1) % congelados.length)); }}
+            onClick={(e) => { e.stopPropagation(); setLightbox((i) => (i === null ? null : (i + 1) % bacons.length)); }}
             className="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
           <figure className="flex max-h-full max-w-5xl flex-col items-center" onClick={(e) => e.stopPropagation()}>
             <img
-              src={congelados[lightbox].img}
-              alt={congelados[lightbox].label}
+              src={bacons[lightbox].img}
+              alt={bacons[lightbox].label}
               className="max-h-[80vh] w-auto rounded-xl object-contain shadow-2xl"
             />
             <figcaption className="mt-4 text-center text-base font-semibold text-white">
-              {congelados[lightbox].label}
+              {bacons[lightbox].label}
             </figcaption>
           </figure>
         </div>

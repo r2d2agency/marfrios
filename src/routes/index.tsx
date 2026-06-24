@@ -66,7 +66,17 @@ const congeladosImgs = [
 
 const produtos: Produto[] = [
   { img: pSalame.url, label: "Salame" },
-  { img: pBacon.url, label: "Bacon Fatiado" },
+  {
+    img: pBacon.url,
+    label: "Bacon",
+    href: "/bacon",
+    mosaic: [
+      "/congelados/bacon-marfrios-fatiado.webp",
+      "/congelados/bacon-cubos-marfrios.webp",
+      "/congelados/bacon-paleta-marfrios.webp",
+      "/congelados/bacon-frigomarla.webp",
+    ],
+  },
   { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
   { img: pMussPed.url, label: "Queijo Mussarela em Peça" },
   { img: pCatupiry.url, label: "Requeijão Catupiry" },
@@ -74,7 +84,12 @@ const produtos: Produto[] = [
     img: pBatata.url,
     label: "Congelados",
     href: "/congelados",
-    mosaic: [pBatata.url, pBatata.url, pBatata.url, pBatata.url],
+    mosaic: [
+      "/produtos/batata.webp",
+      "/congelados/pao-queijo-catupiry.webp",
+      "/congelados/brasa-angus.webp",
+      "/congelados/tilapia.webp",
+    ],
   },
   { img: "/produtos/galeria-laticinios.webp", label: "Leite, Creme de Leite e Nutella" },
   { img: "/produtos/galeria-conservas.webp", label: "Conservas, Palmito e Molhos" },
