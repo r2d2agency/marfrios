@@ -73,8 +73,8 @@ const produtos: Produto[] = [
     mosaic: [
       "/congelados/bacon-marfrios-fatiado.webp",
       "/congelados/bacon-cubos-marfrios.webp",
-      "/congelados/bacon-paleta-marfrios.webp",
       "/congelados/bacon-frigomarla.webp",
+      "/congelados/papada-fatias-misterbeef.webp",
     ],
   },
   { img: pMussFat.url, label: "Queijo Mussarela Fatiado" },
@@ -85,9 +85,9 @@ const produtos: Produto[] = [
     href: "/requeijao",
     mosaic: [
       "/requeijao/catupiry-requeijao-balde.webp",
-      "/requeijao/tirolez-requeijao-cheddar.webp",
-      "/requeijao/catupiry-cream-cheese.webp",
-      "/requeijao/scala-requeijao.webp",
+      "/requeijao/domquejitos-cheddar.webp",
+      "/requeijao/scala-cream-cheese.webp",
+      "/requeijao/tirolez-requeijao.webp",
     ],
   },
   {
@@ -95,12 +95,13 @@ const produtos: Produto[] = [
     label: "Congelados",
     href: "/congelados",
     mosaic: [
-      "/produtos/batata.webp",
+      "/congelados/batata-crinkle-bembrasil.webp",
+      "/congelados/big-chicken-perdigao.webp",
       "/congelados/pao-queijo-catupiry.webp",
-      "/congelados/brasa-angus.webp",
-      "/congelados/tilapia.webp",
+      "/congelados/brasa-picanha-costela.webp",
     ],
   },
+
   { img: "/produtos/galeria-laticinios.webp", label: "Leite, Creme de Leite e Nutella" },
   { img: "/produtos/galeria-conservas.webp", label: "Conservas, Palmito e Molhos" },
   { img: "/produtos/galeria-ovos.webp", label: "Ovos por Atacado" },
