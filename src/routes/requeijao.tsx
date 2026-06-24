@@ -2,13 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ChevronLeft, ChevronRight, MessageCircle, X } from "lucide-react";
 import logo from "@/assets/marfrios-logo.png";
-import pCatupiry from "@/assets/prod-catupiry.jpg.asset.json";
 
 const WHATSAPP = "5517991220670";
 const waLink = `https://wa.me/${WHATSAPP}`;
 
 const itens = [
-  { img: pCatupiry.url, label: "Requeijão Catupiry" },
   { img: "/requeijao/catupiry-requeijao-balde.webp", label: "Requeijão Cremoso Catupiry Profissional 1,010kg" },
   { img: "/requeijao/catupiry-cream-cheese.webp", label: "Cream Cheese Catupiry Profissional 1,2kg" },
   { img: "/requeijao/catupiry-sachet-trio.webp", label: "Catupiry Sachê — Cheddar, Original e Cream Cheese 250g" },
